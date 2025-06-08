@@ -50,6 +50,18 @@ d3.json("authors.json").then(function(data) {
   circles.append("title")
       .text(d => d.touchstone);
 
+  // Select the info panel
+  const infoPanel = d3.select("#info-panel");
+
+  // Add event listeners to circles for info panel
+  circles.on("mouseover", function(event, d) {
+    infoPanel.html(`<h3>${d.id}</h3><p>${d.touchstone}</p>`)
+      .style("display", "block");
+  })
+  .on("mouseout", function() {
+    infoPanel.style("display", "none");
+  });
+
   // Define the 'tick' function for the simulation
   simulation.on("tick", () => {
     link
