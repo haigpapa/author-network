@@ -102,102 +102,85 @@
     {"id": "Yiyun Li", "group": 44, "touchstone": "stoic clarity inside exile."}
   ],
   "links": [
-    {"source": "Julio Torres", "target": "Miranda July", "value": 2},
-    {"source": "Julio Torres", "target": "Kaveh Akbar", "value": 1},
-    {"source": "Julio Torres", "target": "Leonora Carrington", "value": 1},
-    {"source": "Miranda July", "target": "Kaveh Akbar", "value": 1},
-    {"source": "Miranda July", "target": "Leonora Carrington", "value": 1},
-    {"source": "Rabih Alameddine", "target": "Jeanette Winterson", "value": 2},
-    {"source": "Rabih Alameddine", "target": "Jhumpa Lahiri", "value": 1},
-    {"source": "Yorgos Lanthimos", "target": "Lydia Davis", "value": 1},
-    {"source": "Bhanu Kapil", "target": "Ottessa Moshfegh", "value": 1},
-    {"source": "Ocean Vuong", "target": "Ada Limón", "value": 2},
-    {"source": "George Saunders", "target": "Ahmed Saadawi", "value": 2},
-    {"source": "Danielle Dutton", "target": "Angela Carter", "value": 2},
-    {"source": "Danielle Dutton", "target": "Kim Hyesoon", "value": 1},
-    {"source": "Franz Kafka", "target": "Zadie Smith", "value": 1},
-    {"source": "Etel Adnan", "target": "Anne Michaels", "value": 1},
-    {"source": "Mariana Enríquez", "target": "James Baldwin", "value": 1},
-    {"id": "Anne Carson", "group": 3, "touchstone": "classical shards in modern lyric armor."},
-    {"id": "Yasmine El Rashidi", "group": 13, "touchstone": "Cairo street-level interiority."},
-    {"id": "Ahmed Saadawi", "group": 2, "touchstone": "Baghdad gothic with Franken-satire."},
-    {"id": "Olga Tokarczuk", "group": 14, "touchstone": "roaming metaphysical eco-myths."},
-    {"id": "Italo Calvino", "group": 15, "touchstone": "playful architecture of possibility."},
-    {"id": "Jorge Luis Borges", "group": 16, "touchstone": "infinity mirrors & library mazes."},
-    {"id": "Gabriel García Márquez", "group": 17, "touchstone": "humid magical politics."},
-    {"id": "Haruki Murakami", "group": 3, "touchstone": "liminal jazz dream alleys."},
-    {"id": "Clarice Lispector", "group": 15, "touchstone": "interior meteor showers."},
-    {"id": "Angela Carter", "group": 7, "touchstone": "baroque feminist fairy-flips."},
-    {"id": "Leonora Carrington", "group": 1, "touchstone": "painterly surreal beast-logic."},
-    {"id": "Jeanette Winterson", "group": 2, "touchstone": "queer myth remix with pulse."},
-    {"id": "Nnedi Okorafor", "group": 18, "touchstone": "Africanfuturist organic world-splicing."},
-    {"id": "Ben Okri", "group": 19, "touchstone": "spirit-soaked allegory rivers."},
-    {"id": "Kobo Abe", "group": 20, "touchstone": "alienated body-horror metaphysics."},
-    {"id": "Yoko Ogawa", "group": 3, "touchstone": "elegant cruelty in quiet rooms."},
-    {"id": "Han Kang", "group": 15, "touchstone": "visceral metamorphosis of grief."},
-    {"id": "Kim Hyesoon", "group": 7, "touchstone": "volcanic feminist grotesque poetry."},
-    {"id": "Rainer Maria Rilke", "group": 21, "touchstone": "devotional object-gaze."},
-    {"id": "Sylvia Plath", "group": 22, "touchstone": "searing confessional voltage."},
-    {"id": "Audre Lorde", "group": 7, "touchstone": "erotic rage as liberation syntax."},
-    {"id": "James Baldwin", "group": 3, "touchstone": "moral witness in luminous voice."},
-    {"id": "Katherine Mansfield", "group": 15, "touchstone": "interior miniatures of tremor."},
-    {"id": "William Faulkner", "group": 23, "touchstone": "looping Southern polyphonies."},
-    {"id": "Samuel Beckett", "group": 24, "touchstone": "minimalist void comedy."},
-    {"id": "Virginia Woolf", "group": 15, "touchstone": "tidal interior monologue."},
-    {"id": "Marcel Proust", "group": 7, "touchstone": "memory as spiral cathedral."},
-    {"id": "Roland Barthes", "group": 25, "touchstone": "semiotic x-rays & fragment bliss."},
-    {"id": "Maggie Nelson", "group": 15, "touchstone": "hybrid intellectual intimacy."},
-    {"id": "Claudia Rankine", "group": 3, "touchstone": "documentary lyric against violence."},
-    {"id": "Layli Long Soldier", "group": 7, "touchstone": "syntax as indigenous resistance."},
-    {"id": "Natalie Diaz", "group": 2, "touchstone": "desert-charged sensual myth."},
-    {"id": "Jericho Brown", "group": 26, "touchstone": "duplex form, bruised song."},
-    {"id": "Louise Glück", "group": 27, "touchstone": "austere myth-garden meditation."},
-    {"id": "Ada Limón", "group": 3, "touchstone": "plainspoken wonder & ache."},
-    {"id": "Saidiya Hartman", "group": 15, "touchstone": "critical fabulation of lost voices."},
-    {"id": "Paul Beatty", "group": 28, "touchstone": "satirical whip-smart riffing."},
-    {"id": "Zadie Smith", "group": 8, "touchstone": "polyphonic urban wit."},
-    {"id": "Salman Rushdie", "group": 29, "touchstone": "carnival history sprawl."},
-    {"id": "Arundhati Roy", "group": 3, "touchstone": "lush political lyric epic."},
-    {"id": "Toni Morrison", "group": 15, "touchstone": "haunted communal chorus."},
-    {"id": "Ta-Nehisi Coates", "group": 30, "touchstone": "memoir-essay meteor precision."},
-    {"id": "Jhumpa Lahiri", "group": 2, "touchstone": "diaspora quietude & longing."},
-    {"id": "Chimamanda Ngozi Adichie", "group": 2, "touchstone": "lucid storytelling with sharp gaze."},
-    {"id": "Lydia Davis", "group": 3, "touchstone": "microfiction deadpan."},
-    {"id": "David Foster Wallace", "group": 31, "touchstone": "footnoted centrifugal overflow."},
-    {"id": "Don DeLillo", "group": 32, "touchstone": "white-noise cultural paranoia."},
-    {"id": "Hanya Yanagihara", "group": 33, "touchstone": "operatic trauma endurance."},
-    {"id": "Kazuo Ishiguro", "group": 34, "touchstone": "restrained dystopic regret."},
-    {"id": "Ursula K. Le Guin", "group": 6, "touchstone": "anthropological speculative grace."},
-    {"id": "Octavia Butler", "group": 35, "touchstone": "radical empathy sci-fi."},
-    {"id": "Samuel R. Delany", "group": 7, "touchstone": "baroque linguistic future worlds."},
-    {"id": "Susanna Clarke", "group": 36, "touchstone": "footnote-rich alternate histories."},
-    {"id": "Sofia Samatar", "group": 37, "touchstone": "poetic border-crossing fable."},
-    {"id": "Ken Liu", "group": 2, "touchstone": "silk-punk tech myth."},
-    {"id": "Ted Chiang", "group": 30, "touchstone": "philosophical precision parables."},
-    {"id": "Ruth Ozeki", "group": 2, "touchstone": "Zen media-loop storytelling."},
-    {"id": "Monique Truong", "group": 2, "touchstone": "sensory diaspora kitchens."},
-    {"id": "Viet Thanh Nguyen", "group": 15, "touchstone": "spy satire of memory."},
-    {"id": "Mohsin Hamid", "group": 7, "touchstone": "inventive migration forms."},
-    {"id": "Leila Aboulela", "group": 38, "touchstone": "subtle faith-diaspora currents."},
-    {"id": "Nawal El Saadawi", "group": 7, "touchstone": "feminist rage reportage."},
-    {"id": "Mahmoud Darwish", "group": 39, "touchstone": "homeland elegy verses."},
-    {"id": "Adonis", "group": 40, "touchstone": "modernist Arabic lightning."},
-    {"id": "Forugh Farrokhzad", "group": 15, "touchstone": "rebellious Persian intimacy."},
-    {"id": "Khaled Mattawa", "group": 3, "touchstone": "liminal Mediterranean lyric."},
-    {"id": "Carolyn Forché", "group": 15, "touchstone": "witness poetry of rupture."},
-    {"id": "W.G. Sebald", "group": 7, "touchstone": "photograph-haunted memory drift."},
-    {"id": "Olga Broumas", "group": 7, "touchstone": "myth-queer erotic chants."},
-    {"id": "Anne Michaels", "group": 3, "touchstone": "riverine mnemonic prose."},
-    {"id": "Roberto Bolaño", "group": 15, "touchstone": "detective labyrinth of art."},
-    {"id": "Valeria Luiselli", "group": 25, "touchstone": "fragment road-essay activism."},
-    {"id": "César Aira", "group": 41, "touchstone": "spontaneous novella zig-zag."},
-    {"id": "Alejandro Zambra", "group": 42, "touchstone": "laconic Chilean autofiction."},
-    {"id": "Elena Ferrante", "group": 3, "touchstone": "raw female friendship epic."},
-    {"id": "Alice Munro", "group": 30, "touchstone": "quiet epiphanic rural precision."},
-    {"id": "Deborah Levy", "group": 43, "touchstone": "dream-logic psychogeography."},
-    {"id": "Patricia Lockwood", "group": 3, "touchstone": "internet-meta absurd lyric."},
-    {"id": "Max Porter", "group": 15, "touchstone": "hybrid grief chorus."},
-    {"id": "Jenny Offill", "group": 8, "touchstone": "fragmentary climate dread wit."},
-    {"id": "Yiyun Li", "group": 44, "touchstone": "stoic clarity inside exile."}
+    {
+      "source": "Julio Torres",
+      "target": "Miranda July",
+      "value": 2
+    },
+    {
+      "source": "Julio Torres",
+      "target": "Kaveh Akbar",
+      "value": 1
+    },
+    {
+      "source": "Julio Torres",
+      "target": "Leonora Carrington",
+      "value": 1
+    },
+    {
+      "source": "Miranda July",
+      "target": "Kaveh Akbar",
+      "value": 1
+    },
+    {
+      "source": "Miranda July",
+      "target": "Leonora Carrington",
+      "value": 1
+    },
+    {
+      "source": "Rabih Alameddine",
+      "target": "Jeanette Winterson",
+      "value": 2
+    },
+    {
+      "source": "Rabih Alameddine",
+      "target": "Jhumpa Lahiri",
+      "value": 1
+    },
+    {
+      "source": "Yorgos Lanthimos",
+      "target": "Lydia Davis",
+      "value": 1
+    },
+    {
+      "source": "Bhanu Kapil",
+      "target": "Ottessa Moshfegh",
+      "value": 1
+    },
+    {
+      "source": "Ocean Vuong",
+      "target": "Ada Limón",
+      "value": 2
+    },
+    {
+      "source": "George Saunders",
+      "target": "Ahmed Saadawi",
+      "value": 2
+    },
+    {
+      "source": "Danielle Dutton",
+      "target": "Angela Carter",
+      "value": 2
+    },
+    {
+      "source": "Danielle Dutton",
+      "target": "Kim Hyesoon",
+      "value": 1
+    },
+    {
+      "source": "Franz Kafka",
+      "target": "Zadie Smith",
+      "value": 1
+    },
+    {
+      "source": "Etel Adnan",
+      "target": "Anne Michaels",
+      "value": 1
+    },
+    {
+      "source": "Mariana Enríquez",
+      "target": "James Baldwin",
+      "value": 1
+    }
   ]
 }

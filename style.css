@@ -28,3 +28,29 @@ h1 {
     stroke: #999;
     stroke-opacity: 0.6;
 }
+
+#info-panel {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-family: 'Arial', sans-serif;
+  max-width: 300px; /* Optional: to prevent it from becoming too wide */
+}
+
+#info-panel h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+#info-panel p {
+  margin-bottom: 0;
+  font-size: 0.9em;
+  color: #555;
+}
