@@ -31,7 +31,7 @@ h1 {
     font-size: 14px;
     border: 1px solid #444;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    transition: opacity 0.2s ease-in-out; /* Added for smooth fade */
+    transition: opacity 0.2s ease-in-out;
 }
 #info-panel h2 {
     margin-top: 0;
@@ -47,13 +47,19 @@ h1 {
 
 /* --- UPDATED/NEW NODE AND LINK STYLES --- */
 .node {
-    cursor: pointer; /* Change cursor to show nodes are interactive */
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade for dimming */
 }
 
 .node circle {
     stroke: #333;
     stroke-width: 1.5px;
-    transition: r 0.2s ease-in-out, stroke 0.2s ease-in-out; /* Smooth transitions */
+    transition: r 0.2s ease-in-out, stroke 0.2s ease-in-out, stroke-width 0.2s ease-in-out;
+}
+
+/* NEW: Style for dimmed nodes */
+.node.dimmed {
+    opacity: 0.15;
 }
 
 .node text {
@@ -64,14 +70,21 @@ h1 {
     text-shadow: 0 0 3px #000;
 }
 
-/* Style for the permanently selected node */
+/* UPDATED: Style for the permanently selected node's circle */
 .node.selected circle {
-    stroke: #00ffff; /* A bright cyan color for the stroke */
+    stroke: #00ffff;
     stroke-width: 3px;
+    r: 12px; /* Make the selected node permanently larger */
 }
+
 
 .link {
     stroke: #999;
     stroke-opacity: 0.6;
-    transition: stroke-opacity 0.2s ease-in-out;
+    transition: stroke-opacity 0.3s ease-in-out;
+}
+
+/* NEW: Style for dimmed links */
+.link.dimmed {
+    stroke-opacity: 0.05;
 }
