@@ -19,7 +19,12 @@ h1 {
     height: 100vh;
 }
 
-/* --- UPDATED INFO PANEL STYLE --- */
+/* --- NEW: Add cursor style for the SVG canvas --- */
+#visualization svg {
+    cursor: grab;
+}
+
+
 #info-panel {
     position: absolute;
     top: 20px;
@@ -33,7 +38,7 @@ h1 {
     border: 1px solid #444;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     transition: opacity 0.2s ease-in-out;
-    z-index: 10; /* ADD THIS LINE TO BRING IT TO THE FRONT */
+    z-index: 10;
 }
 #info-panel h2 {
     margin-top: 0;
@@ -47,7 +52,6 @@ h1 {
 }
 
 
-/* --- NODE AND LINK STYLES --- */
 .node {
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
