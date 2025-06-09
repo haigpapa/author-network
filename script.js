@@ -1,4 +1,4 @@
-// Set dimensions and margins for the graph
+// Set dimensions for the graph
 const width = window.innerWidth;
 const height = window.innerHeight;
 
@@ -8,28 +8,30 @@ const svg = d3.select("#visualization")
     .attr("width", width)
     .attr("height", height);
 
+// Select the info panel
+const infoPanel = d3.select("#info-panel");
+
+// --- NEW: A variable to store the currently selected node ---
+let selectedNode = null;
+
+
 // Load the data from the JSON file
 d3.json("authors.json").then(function(data) {
 
-  // Create a color scale for the groups
   const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-  // Initialize the force simulation
   const simulation = d3.forceSimulation(data.nodes)
-      .force("link", d3.forceLink(data.links).id(d => d.id).distance(70))
-      .force("charge", d3.forceManyBody().strength(-120))
+      .force("link", d3.forceLink(data.links).id(d => d.id).distance(80))
+      .force("charge", d3.forceManyBody().strength(-150))
       .force("center", d3.forceCenter(width / 2, height / 2));
 
-  // Add the links (edges)
   const link = svg.append("g")
       .attr("class", "links")
     .selectAll("line")
     .data(data.links)
     .enter().append("line")
-      .attr("class", "link")
-      .style("stroke-width", d => Math.sqrt(d.value));
+      .attr("class", "link");
 
-  // Add the nodes
   const node = svg.append("g")
       .attr("class", "nodes")
     .selectAll("g")
@@ -38,7 +40,7 @@ d3.json("authors.json").then(function(data) {
       .attr("class", "node");
 
   const circles = node.append("circle")
-      .attr("r", 10)
+      .attr("r", 8)
       .attr("fill", d => color(d.group));
 
   const labels = node.append("text")
@@ -46,32 +48,86 @@ d3.json("authors.json").then(function(data) {
       .attr('x', 12)
       .attr('y', 4);
 
-  // Add a tooltip for the touchstone
-  circles.append("title")
-      .text(d => d.touchstone);
+  // --- UPDATED EVENT HANDLERS ---
 
-  // Select the info panel
-  const infoPanel = d3.select("#info-panel");
+  // Update info panel
+  function updateInfoPanel(d) {
+    if (d) {
+      infoPanel.html(`<h2>${d.id}</h2><p>"${d.touchstone}"</p>`);
+    } else {
+      infoPanel.html(`<p>Hover over an author, or click to select.</p>`);
+    }
+  }
 
-  // Add event listeners to circles for info panel
-  circles.on("mouseover", function(event, d) {
-    infoPanel.html(`<h3>${d.id}</h3><p>${d.touchstone}</p>`)
-      .style("display", "block");
-  })
-  .on("mouseout", function() {
-    infoPanel.style("display", "none");
+  // Handle mouseover
+  node.on("mouseover", (event, d) => {
+    if (!selectedNode) { // Only show hover effect if nothing is selected
+      updateInfoPanel(d);
+    }
+    d3.select(event.currentTarget).select("circle").attr("r", 12);
   });
 
-  // Define the 'tick' function for the simulation
+  // Handle mouseout
+  node.on("mouseout", (event, d) => {
+    if (!selectedNode) {
+      updateInfoPanel(null);
+    }
+    d3.select(event.currentTarget).select("circle").attr("r", 8);
+  });
+
+  // --- NEW: Handle click events ---
+  node.on("click", (event, d) => {
+    if (selectedNode && selectedNode.id === d.id) {
+      // If the clicked node is already selected, unselect it
+      selectedNode = null;
+      node.classed("selected", false); // Remove selected class from all nodes
+    } else {
+      // Otherwise, select the new node
+      selectedNode = d;
+      node.classed("selected", n => n.id === d.id); // Set selected class on the clicked node
+    }
+    updateInfoPanel(selectedNode);
+  });
+
+  // --- NEW: Clear selection when clicking the background ---
+  svg.on("click", (event) => {
+    if (event.target.tagName === 'svg') { // Ensure we clicked the SVG, not a node
+      selectedNode = null;
+      node.classed("selected", false);
+      updateInfoPanel(null);
+    }
+  });
+
+
+  // Make nodes draggable
+  node.call(d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));
+
   simulation.on("tick", () => {
     link
         .attr("x1", d => d.source.x)
         .attr("y1", d => d.source.y)
         .attr("x2", d => d.target.x)
         .attr("y2", d => d.target.y);
-
     node
         .attr("transform", d => `translate(${d.x},${d.y})`);
   });
 
+  // Drag functions
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
 });
