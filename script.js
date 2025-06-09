@@ -13,9 +13,12 @@ const infoPanel = d3.select("#info-panel");
 
 let selectedNode = null;
 
+// --- NEW: Create a main container for zoom ---
+const container = svg.append("g");
+
+
 d3.json("authors.json").then(function(data) {
 
-  // --- NEW: Create a data structure for quick lookups of neighbors ---
   const linkedByIndex = {};
   data.links.forEach(d => {
     linkedByIndex[`${d.source.id},${d.target.id}`] = 1;
@@ -24,9 +27,7 @@ d3.json("authors.json").then(function(data) {
   function areNeighbors(a, b) {
     return linkedByIndex[`${a.id},${b.id}`] || linkedByIndex[`${b.id},${a.id}`] || a.id === b.id;
   }
-  // --- END NEW DATA STRUCTURE ---
-
-
+  
   const color = d3.scaleOrdinal(d3.schemeCategory10);
 
   const simulation = d3.forceSimulation(data.nodes)
@@ -34,14 +35,15 @@ d3.json("authors.json").then(function(data) {
       .force("charge", d3.forceManyBody().strength(-150))
       .force("center", d3.forceCenter(width / 2, height / 2));
 
-  const link = svg.append("g")
+  // --- UPDATED: Append links and nodes to the 'container' group ---
+  const link = container.append("g")
       .attr("class", "links")
     .selectAll("line")
     .data(data.links)
     .enter().append("line")
       .attr("class", "link");
 
-  const node = svg.append("g")
+  const node = container.append("g")
       .attr("class", "nodes")
     .selectAll("g")
     .data(data.nodes)
@@ -57,20 +59,16 @@ d3.json("authors.json").then(function(data) {
       .attr('x', 12)
       .attr('y', 4);
 
-  // --- NEW: Central function to update all visual states ---
+  
   function updateVisuals(highlightedNode) {
     if (highlightedNode) {
-      // Dim all nodes and links
       node.classed("dimmed", true);
       link.classed("dimmed", true);
-
-      // Highlight the selected node and its neighbors
       node.filter(d => areNeighbors(highlightedNode, d))
         .classed("dimmed", false);
       link.filter(d => d.source.id === highlightedNode.id || d.target.id === highlightedNode.id)
         .classed("dimmed", false);
     } else {
-      // If no node is highlighted, remove all dimming
       node.classed("dimmed", false);
       link.classed("dimmed", false);
     }
@@ -84,9 +82,6 @@ d3.json("authors.json").then(function(data) {
     }
   }
 
-
-  // --- UPDATED EVENT HANDLERS ---
-
   node.on("mouseover", (event, d) => {
     updateInfoPanel(d);
     updateVisuals(d);
@@ -94,13 +89,15 @@ d3.json("authors.json").then(function(data) {
   });
 
   node.on("mouseout", (event, d) => {
-    updateInfoPanel(selectedNode); // Revert panel to selected node, if any
-    updateVisuals(selectedNode);  // Revert visuals to selected node, if any
-    circles.filter(n => n.id === d.id).attr("r", 8);
+    updateInfoPanel(selectedNode);
+    updateVisuals(selectedNode);
+    if (!node.filter(n => n.id === d.id).classed("selected")) {
+        circles.filter(n => n.id === d.id).attr("r", 8);
+    }
   });
 
   node.on("click", (event, d) => {
-    event.stopPropagation(); // Prevent background click from firing
+    event.stopPropagation();
     if (selectedNode && selectedNode.id === d.id) {
       selectedNode = null;
     } else {
@@ -110,14 +107,28 @@ d3.json("authors.json").then(function(data) {
     updateInfoPanel(selectedNode);
     updateVisuals(selectedNode);
   });
-
-  svg.on("click", () => {
-    selectedNode = null;
-    node.classed("selected", false);
-    updateInfoPanel(null);
-    updateVisuals(null);
+  
+  // UPDATED: Background click now also resets zoom
+  svg.on("click", (event) => {
+    if (event.target.tagName === 'svg') {
+      selectedNode = null;
+      node.classed("selected", false);
+      updateInfoPanel(null);
+      updateVisuals(null);
+      // --- NEW: Reset zoom on background click ---
+      svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+    }
   });
 
+  // --- NEW: Zoom functionality ---
+  const zoom = d3.zoom()
+      .scaleExtent([0.1, 4]) // Set min and max zoom levels
+      .on("zoom", (event) => {
+        container.attr("transform", event.transform);
+      });
+
+  svg.call(zoom);
+  // --- END NEW Zoom ---
 
   node.call(d3.drag()
       .on("start", dragstarted)
@@ -133,6 +144,8 @@ d3.json("authors.json").then(function(data) {
   function dragstarted(event, d) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x; d.fy = d.y;
+    // NEW: Also make cursor 'grabbing' during drag
+    svg.style("cursor", "grabbing");
   }
   function dragged(event, d) {
     d.fx = event.x; d.fy = event.y;
@@ -140,5 +153,7 @@ d3.json("authors.json").then(function(data) {
   function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null; d.fy = null;
+    // NEW: Revert cursor to 'grab' after drag
+    svg.style("cursor", "grab");
   }
 });
